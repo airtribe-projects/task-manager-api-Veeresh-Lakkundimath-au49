@@ -5,7 +5,6 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`server listining to port ${PORT}`);
 });
-
 app.use(express.json());
 
 const data = {
@@ -16,7 +15,7 @@ const data = {
       description: "Install Node.js, npm, and git",
       completed: true,
       priority: "low",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 2,
@@ -26,7 +25,7 @@ const data = {
       completed: true,
       priority: "medium",
 
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 3,
@@ -35,7 +34,7 @@ const data = {
       completed: true,
       priority: "high",
 
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 4,
@@ -43,7 +42,7 @@ const data = {
       description: "Install Express",
       completed: false,
       priority: "low",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 5,
@@ -51,7 +50,7 @@ const data = {
       description: "Install Mongoose",
       completed: false,
       priority: "medium",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 6,
@@ -59,7 +58,7 @@ const data = {
       description: "Install Morgan",
       completed: false,
       priority: "high",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 7,
@@ -67,7 +66,7 @@ const data = {
       description: "Install body-parser",
       completed: false,
       priority: "low",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 8,
@@ -75,7 +74,7 @@ const data = {
       description: "Install cors",
       completed: false,
       priority: "medium",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 9,
@@ -83,7 +82,7 @@ const data = {
       description: "Install passport",
       completed: false,
       priority: "high",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 10,
@@ -91,7 +90,7 @@ const data = {
       description: "Install passport-local",
       completed: false,
       priority: "low",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 11,
@@ -99,7 +98,7 @@ const data = {
       description: "Install passport-local-mongoose",
       completed: false,
       priority: "medium",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 12,
@@ -107,7 +106,7 @@ const data = {
       description: "Install express-session",
       completed: false,
       priority: "high",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 13,
@@ -115,7 +114,7 @@ const data = {
       description: "Install connect-mongo",
       completed: false,
       priority: "low",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 14,
@@ -123,7 +122,7 @@ const data = {
       description: "Install dotenv",
       completed: false,
       priority: "medium",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
     {
       id: 15,
@@ -131,7 +130,7 @@ const data = {
       description: "Install jsonwebtoken",
       completed: false,
       priority: "high",
-      creaatedAt: new Date(),
+      createdAt: new Date(),
     },
   ],
 };
@@ -158,7 +157,7 @@ app.post("/tasks", (req, res) => {
   if (
     (title && title == "") ||
     (description && description == "") ||
-    is_boolean(completed)
+    isBoolean(completed)
   ) {
     return res.status(400).send({ message: "Invalid input" });
   }
@@ -208,7 +207,7 @@ app.put("/tasks/:id", (req, res) => {
 
 app.get("/tasks/?completed", (req, res) => {
   const completed = req.query.completed;
-  if (!is_boolean(completed)) {
+  if (!isBoolean(completed)) {
     return res.status(400).send({ message: "Invalid input" });
   }
   const response = data.tasks.map((item) => {
@@ -219,6 +218,6 @@ app.get("/tasks/?completed", (req, res) => {
   return res.status(200).send({ tasks: response });
 });
 
-function is_boolean(str) {
+function isBoolean(str) {
   return str === true || str === false;
 }
